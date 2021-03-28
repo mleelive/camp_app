@@ -26,7 +26,7 @@ class UserTest < ActiveSupport::TestCase
   end
   
   test "email should not be to long" do
-    @user.email = "a" *244 + "@example.com"
+    @user.email = "a" * 244 + "@example.com"
     assert_not @user.valid?
   end
   
@@ -55,6 +55,8 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   
-    
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @user.authenticated?('')
+  end  
 end
   
